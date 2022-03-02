@@ -1,0 +1,47 @@
+{
+    "name": "前端导航助手",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "default_locale": "zh_CN",
+    "description": "一个前端导航的插件",
+    "icons": {
+        "16": "static/img/nav_16.png",
+        "48": "static/img/nav_48.png",
+        "128": "static/img/nav_128.png"
+    },
+    "background": {
+        "scripts": ["background/index.js"],
+        "persistent": false       
+    },
+    "permissions": [
+        "storage",
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+          "matches": [
+            "http://*/*",
+            "https://*/*",
+            "file://*/*"
+          ],
+          "js": [
+            "static/vendor/require.js"
+          ],
+          "run_at": "document_end",
+          "all_frames": false
+        }
+    ],
+    "web_accessible_resources": [
+        "static/data/index.js"
+    ],
+    "browser_action": {
+        "default_icon": "static/img/nav_19.png",
+        "default_title": "前端导航助手",
+        "default_popup": "popup/index.html"
+    },
+    "options_ui": {
+        "page": "options/index.html",
+        "open_in_tab": true
+    },
+    "omnibox": { "keyword" : "nav" }
+}
